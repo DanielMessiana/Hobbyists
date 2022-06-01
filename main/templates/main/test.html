@@ -1,0 +1,98 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<h1 style="margin-top:80px;">Find the right hobby for you!</h1>
+
+<style>
+	.button {
+	  border: 2px solid black;
+	  color: white;
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 20px;
+	  margin-top: auto;
+	  margin-left: auto;
+	  cursor: pointer;
+	}
+
+	.buttonback {
+		float: right;
+		margin-top: 200;
+		background: #4EDA16
+	}
+
+	.buttonsubmit {
+		margin-top: 1000;
+		background: #4EDA16;
+	}
+
+	@media (min-width: 600px) {
+		.buttonsubmit {
+		margin-left: 350;
+		margin-top: 1200;
+		background: #4EDA16;
+	}
+
+	}
+
+	.button:hover {
+		background: white;
+		color: black;
+	}
+
+	.square {
+		border-radius: 25px 25px 25px 25px;
+		margin: auto;
+		height: 1500px;
+		width: 75%;
+		border: 4px solid black;
+		background-color: white;
+		opacity: 0.7;
+	}
+
+	@media (min-width: 600px) {
+		.square {
+		border-radius: 25px 25px 25px 25px;
+		margin: auto;
+		height: 1700px;
+		width: 500px;
+		border: 4px solid black;
+		background-color: white;
+		opacity: 0.7;
+	}
+
+	}
+
+	.question {
+		font-size: 125%;
+	}
+
+	@media (min-width: 600px) {
+		.question {
+			font-size: 25;
+		}
+	}
+
+	.answer {
+		font-size: 40;
+	}
+
+</style>
+
+<div class="square">
+	<p class="question">Would you rather an outside hobby or an inside hobby?</p> 
+	<form method="post" action="/results" class="answer">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submit", class="button buttonsubmit">Submit</button>
+	</form>
+</div>
+<br></br>
+<a href="/"><button class="button buttonback">Back to Start</button></a>
+
+
+
+
+{% endblock %}
