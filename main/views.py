@@ -17,21 +17,6 @@ def test(response):
 	if response.method == "POST":
 		form = QuestioneOne(response.POST)
 
-		if form.is_valid():
-			inside = form.cleaned_data['Inside']
-			outside = form.cleaned_data['Outside']
-			either = form.cleaned_data['Either']
-
-			if inside:
-				t = Preferences(text="inside")
-				t.save()
-			if outside:
-				t = Preferences(text="outside")
-				t.save()
-			if either:
-				t = Preferences(text="either")
-				t.save()
-
 	else:
 		form = QuestioneOne()
 
