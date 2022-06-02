@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Preferences
-from .forms import QuestioneOne
+from .models import Question, Choice
 
 def index(response):
 	return HttpResponse("<h1>test</h1>")
