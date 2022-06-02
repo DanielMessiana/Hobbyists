@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Question, Choice
+from .models import Preference
 
 def index(response):
 	return HttpResponse("<h1>test</h1>")
@@ -13,13 +13,8 @@ def secret(response):
 	return render(response, "main/secret.html", {})
 
 def test(response):
-	if response.method == "POST":
-		form = QuestioneOne(response.POST)
 
-	else:
-		form = QuestioneOne()
-
-	return render(response, "main/test.html", {"form":form})
+	return render(response, "main/test.html", {})
 
 def results(response):
 
