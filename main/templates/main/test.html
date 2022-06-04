@@ -4,6 +4,7 @@
 <h1 style="margin-top:80px;">Find the right hobby for you!</h1>
 
 <style>
+
 	.button {
 	  border: 2px solid black;
 	  color: white;
@@ -76,14 +77,62 @@
 	}
 
 	.answer {
-		font-size: 40;
+		font-size: 30;
+
+	}
+
+	input[type='radio'] { 
+    	transform: scale(1.5); 
+ 	}
+
+
+
+ 	@media (min-width: 600px) {
+ 		.answer {
+			font-size: 40;
+
+		}
+
+		input[type='radio'] { 
+    		transform: scale(2); 
+ 		}
 	}
 
 </style>
 
 <div class="square">
+	<form method="get" action="/results">
+		{% csrf_token %}
+		<p class="question">What type of hobby would your prefer?</p> 
+		<label for="inside" class="answer">Inside</label>
+		<input type="radio" id="inside" name="inside" value="Inside"><br>
+		
+		<label for="outside" class="answer">Outside</label>
+		<input type="radio" id="outside" name="outside" value="Outside"><br>
 
-	
+		<label for="either" class="answer">Either</label>
+		<input type="radio" id="either" name="either" value="Either"><br>
+
+		<p class="question">Do you want a physically high or low intensity hobby?</p> 
+		<label for="high" class="answer">High</label>
+		<input type="radio" id="high" name="high" value="High"><br>
+		
+		<label for="low" class="answer">Low</label>
+		<input type="radio" id="low" name="low" value="Low"><br>
+
+		<label for="either2" class="answer">Either</label>
+		<input type="radio" id="either2" name="either2" value="Either2"><br>
+
+		<p class="question">Are you athletic?</p> 
+		<label for="ath" class="answer">Yes</label>
+		<input type="radio" id="ath" name="ath" value="Ath"><br>
+		
+		<label for="nonath" class="answer">No</label>
+		<input type="radio" id="nonath" name="nonath" value="nonath"><br>
+
+		<button type="submit", class="button buttonsubmit">Submit</button>
+
+	</form>	
 </div>
 <br></br>
 <a href="/"><button class="button buttonback">Back to Start</button></a>
