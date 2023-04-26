@@ -7,6 +7,6 @@ urlpatterns=[
 path("temp", views.index, name="index"),
 path("", views.start, name="start"),
 path("secret", views.secret, name="secret"),
-path("test", views.test, name="test"),
+path("survey", views.survey, name="survey"),
 path("results", views.results, name="results")
 ]
