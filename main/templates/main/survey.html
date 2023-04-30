@@ -65,18 +65,16 @@
 		.square {
 		border-radius: 25px 25px 25px 25px;
 		margin: auto;
-		height: 70%;
-		width: 65%;
+		height: 265%;
+		width: 40%;
 		border: 4px solid black;
 		background-color: white;
 		opacity: 0.7;
 	}
-
-
 	}
 
 	.question {
-		border-radius: 25px 25px 25px 25px;
+		border-radius: 15px 15px 15px 15px;
 		height: 50px;
 		width: 500px;
 		border: 4px solid black;
@@ -97,25 +95,30 @@
 
 	.answer {
 		font-size: 30;
-
+		text-align: center;
 	}
 
 	input[type='radio'] { 
     	transform: scale(1.5); 
-    	margin-left: 85;
+    	margin-left: auto;
+		margin-right: auto;
  	}
-
-
 
  	@media (min-width: 600px) {
  		.answer {
 			font-size: 40;
-
 		}
 
 		input[type='radio'] { 
-    		transform: scale(2);
-    		margin-left: 180;
+    		transform: scale(2.3);
+    		margin-left: 49%;
+    		margin-right:10px;
+ 		}
+
+ 		input[type='checkbox'] { 
+    		transform: scale(2.3);
+    		margin-left: 49%;
+    		margin-right:10px;
  		}
 	}
 
@@ -124,18 +127,80 @@
 <div class="square">
 <form method="post">
     {% csrf_token %}
-    <p class="question">Are you looking for a sport?:</p>
-    <input type="text" name="question1">
-    <p>Question 2:</p>
-    <input type="radio" name="question2" value="option1"> Option 1<br>
-    <input type="radio" name="question2" value="option2"> Option 2<br>
-    <input type="radio" name="question2" value="option3"> Option 3<br>
-    <p>Question 3:</p>
-    <input type="checkbox" name="question3[]" value="option1"> Option 1<br>
-    <input type="checkbox" name="question3[]" value="option2"> Option 2<br>
-    <input type="checkbox" name="question3[]" value="option3"> Option 3<br>
+    <!-- sport -->
+    <p class="question">Are you looking for a sport?</p>
+    <input type="radio" name="question1" value="Yes"> <span style="font-size:25px;">Yes</span><br>
+    <input type="radio" style="margin-top:30px" name="question1" value="No"> <span style="font-size:25px;">No</span><br>
+
+    <!-- speed -->
+    <p class="question" style="margin-top:40px">Are you looking for a slow or fast paced hobby?</p>
+    <input type="radio" name="question2" value="Slow"> <span style="font-size:25px;">Slow</span><br>
+    <input type="radio" style="margin-top:30px" name="question2" value="Fast"> <span style="font-size:25px;">Fast</span><br>
+
+    <!-- intellectual -->
+    <p class="question" style="margin-top:40px;width: 650px;">Are you looking for an intellectually challenging hobby?</p>
+    <input type="radio" name="question3" value="Yes"> <span style="font-size:25px;">Yes</span><br>
+    <input type="radio" style="margin-top:30px" name="question3" value="No"> <span style="font-size:25px;">No</span><br>
+
+    <!-- focus -->
+    <p class="question" style="margin-top:40px">What should your hobby focus on?</p>
+    <input type="checkbox" name="question4" value="Spiritual"> <span style="font-size:25px;">Spiritual</span><br>
+    <input type="checkbox" style="margin-top:30px" name="question4" value="Animal"> <span style="font-size:25px;">Animal</span><br>
+    <input type="checkbox" style="margin-top:30px" name="question4" value="Physical"> <span style="font-size:25px;">Physical</span><br>
+    <input type="radio" style="margin-top:30px" name="question4" value="None" onclick="disableCheckboxes()"> <span style="font-size:25px;">None of the above</span><br>
+
+	<script>
+	function disableCheckboxes() {
+	  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+	  checkboxes.forEach(function(checkbox) {
+	    checkbox.disabled = true;
+	  });
+	}
+	</script>
+
+	<!-- Social -->
+    <p class="question" style="margin-top:40px">Should your hobby be alone or with others?</p>
+    <input type="radio" name="question5" value="Alone"> <span style="font-size:25px;">Alone</span><br>
+    <input type="radio" style="margin-top:30px" name="question5" value="Group"> <span style="font-size:25px;">With others</span><br>
+    <input type="radio" style="margin-top:30px" name="question5" value="Either"> <span style="font-size:25px;">Either</span><br>
+
+    <!-- Time -->
+    <p class="question" style="margin-top:40px">How long should your hobby take?</p>
+    <input type="radio" name="question6" value="Alot"> <span style="font-size:25px;">A longer time</span><br>
+    <input type="radio" style="margin-top:30px" name="question6" value="InBetween"> <span style="font-size:25px;">In between</span><br>
+    <input type="radio" style="margin-top:30px" name="question6" value="Minimal"> <span style="font-size:25px;">A shorter time</span><br>
+
+    <!-- Creative -->
+    <p class="question" style="margin-top:40px">Are you looking for a creative hobby?</p>
+    <input type="radio" name="question7" value="Yes"> <span style="font-size:25px;">Yes</span><br>
+    <input type="radio" style="margin-top:30px" name="question7" value="No"> <span style="font-size:25px;">No</span><br>
+
+    <!-- Art -->
+    <p class="question" style="margin-top:40px">Are you looking for an art related hobby?</p>
+    <input type="radio" name="question8" value="Yes"> <span style="font-size:25px;">Yes</span><br>
+    <input type="radio" style="margin-top:30px" name="question8" value="No"> <span style="font-size:25px;">No</span><br>
+
+    <!-- Craftmanship -->
+    <p class="question" style="margin-top:40px;width: 650px;">Do you want to make something with your hands?</p>
+    <input type="radio" name="question9" value="Yes"> <span style="font-size:25px;">Yes</span><br>
+    <input type="radio" style="margin-top:30px" name="question9" value="No"> <span style="font-size:25px;">No</span><br>
+
+    <!-- Physicalexp -->
+    <p class="question" style="margin-top:40px">Do you want to physically express yourself?</p>
+    <input type="radio" name="question10" value="Yes"> <span style="font-size:25px;">Yes</span><br>
+    <input type="radio" style="margin-top:30px" name="question10" value="No"> <span style="font-size:25px;">No</span><br>
+
+    <!-- Cost -->
+    <p class="question" style="margin-top:40px;width: 650px;">How much are you looking to spend on a hobby?</p>
+    <input type="radio" name="question11" value="free"> <span style="font-size:25px;">0</span><br>
+    <input type="radio" style="margin-top:30px" name="question11" value="LTT"> <span style="font-size:25px;">Less than $10</span><br>
+    <input type="radio" style="margin-top:30px" name="question11" value="TTF"> <span style="font-size:25px;">$10-$50</span><br>
+    <input type="radio" style="margin-top:30px" name="question11" value="FTH"> <span style="font-size:25px;">$50-$100</span><br>
+    <input type="radio" style="margin-top:30px" name="question11" value="MTH"> <span style="font-size:25px;">More than $100</span><br>
+
     <br>
-    <input type="submit" value="Submit">
+
+    <input type="submit" style="margin-top:30px;margin-left:90%" value="Submit">
 </form>
 
 </div>
