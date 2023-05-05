@@ -88,15 +88,15 @@ def survey_view(request):
                 score -= 1
 
             if hobby.cost.capitalize() == "It's free" and question3 == 'free':
-                score += 1
-            elif hobby.cost.capitalize() == 'Less than $10' and question3 == 'LTT':
-                score += 1
-            elif hobby.cost.capitalize() == '$10-$50' and question3 == 'TTF':
-                score += 1
-            elif hobby.cost.capitalize() == '$50-$100' and question3 == 'FTH':
-                score += 1
-            elif hobby.cost.capitalize() == 'More than $100' and question3 == 'MTH':
-                score += 1
+                score += 100                
+            elif (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10') and question3 == 'LTT':
+                score += 100
+            elif  (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10' or hobby.cost.capitalize() == '$10-$50') and question3 == 'TTF':
+                score += 100
+            elif (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10' or hobby.cost.capitalize() == '$10-$50' or hobby.cost.capitalize() == '$50-$100') and question3 == 'FTH':
+                score += 100
+            elif (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10' or hobby.cost.capitalize() == '$10-$50' or hobby.cost.capitalize() == '$50-$100' or hobby.cost.capitalize() == 'More than $100') and question3 == 'MTH':
+                score += 100
             
             scores[hobby] = score
 
