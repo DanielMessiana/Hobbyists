@@ -34,58 +34,58 @@ def survey_view(request):
         for hobby in hobbies:
             score = 0
             if hobby.sport.capitalize() == 'Yes' and question1 == 'Yes':
-                score += 1
+                score += 10
             elif hobby.sport.capitalize() == 'No' and question1 == 'No':
-                score -= 1
+                score -= 10
 
             if hobby.speed.capitalize() == 'Fast' and question2 == 'Fast':
-                score += 1
+                score += 10
             elif hobby.speed.capitalize() == 'Slow' and question2 == 'Slow':
-                score += 1
+                score += 10
 
             if hobby.intellectual.capitalize() == 'Yes' and question3 == 'Yes':
-                score += 1
+                score += 10
             elif hobby.intellectual.capitalize() == 'No' and question3 == 'No':
-                score -= 1
+                score -= 10
 
             if hobby.focus.capitalize() == 'Yes' and question4 == 'Yes':
-                score += 1
+                score += 10
             elif hobby.focus.capitalize() == 'No' and question4 == 'No':
-                score -= 1
+                score -= 10
 
             if hobby.social.capitalize() == 'Alone' and question5 == 'Alone':
-                score += 1
+                score += 10
             elif hobby.social.capitalize() == 'With others' and question5 == 'Group':
-                score += 1
+                score += 10
             elif (hobby.social.capitalize() == 'Either' and question6 == 'Either') or (hobby.social.capitalize() == 'With others' and question6 == 'Either') or (hobby.social.capitalize() == 'Alone' and question6 == 'Either'):
-                score += 1
+                score += 10
 
             if hobby.time.capitalize() == 'A lot' and question7 == 'Alot':
-                score += 1
+                score += 10
             elif hobby.time.capitalize() == 'In between' and question7 == 'InBetween':
-                score += 1
+                score += 10
             elif hobby.time.capitalize() == 'Minimal' and question7 == 'Minimal':
-                score += 1
+                score += 10
 
             if hobby.creative.capitalize() == 'Yes' and question3 == 'Yes':
-                score += 1
+                score += 10
             elif hobby.creative.capitalize() == 'No' and question3 == 'No':
-                score -= 1
+                score -= 10
 
             if hobby.art.capitalize() == 'Yes' and question3 == 'Yes':
-                score += 1
+                score += 10
             elif hobby.art.capitalize() == 'No' and question3 == 'No':
-                score -= 1
+                score -= 10
 
             if hobby.craft.capitalize() == 'Yes' and question3 == 'Yes':
-                score += 1
+                score += 10
             elif hobby.craft.capitalize() == 'No' and question3 == 'No':
-                score -= 1
+                score -= 10
 
             if hobby.physicalexp.capitalize() == 'Yes' and question3 == 'Yes':
-                score += 1
+                score += 10
             elif hobby.physicalexp.capitalize() == 'No' and question3 == 'No':
-                score -= 1
+                score -= 10
 
             if hobby.cost.capitalize() == "It's free" and question3 == 'free':
                 score += 100                
