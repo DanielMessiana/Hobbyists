@@ -8,10 +8,10 @@ from .models import Hobby
 import random
 
 def index(response):
-	return HttpResponse("<h1>test</h1>")
+    return HttpResponse("<h1>test</h1>")
 
 def start(response):
-	return render(response, "main/start.html", {})
+    return render(response, "main/start.html", {})
 
 def survey_view(request):
     if request.method == 'POST':
@@ -57,45 +57,45 @@ def survey_view(request):
                 score += 10
             elif hobby.social.capitalize() == 'With others' and question5 == 'Group':
                 score += 10
-            elif (hobby.social.capitalize() == 'Either' and question6 == 'Either') or (hobby.social.capitalize() == 'With others' and question6 == 'Either') or (hobby.social.capitalize() == 'Alone' and question6 == 'Either'):
+            elif (hobby.social.capitalize() == 'Either' and question5 == 'Either') or (hobby.social.capitalize() == 'With others' and question5 == 'Either') or (hobby.social.capitalize() == 'Alone' and question5 == 'Either'):
                 score += 10
 
-            if hobby.time.capitalize() == 'A lot' and question7 == 'Alot':
+            if hobby.time.capitalize() == 'A lot' and question6 == 'Alot':
                 score += 10
-            elif hobby.time.capitalize() == 'In between' and question7 == 'InBetween':
+            elif hobby.time.capitalize() == 'In between' and question6 == 'InBetween':
                 score += 10
-            elif hobby.time.capitalize() == 'Minimal' and question7 == 'Minimal':
+            elif hobby.time.capitalize() == 'Minimal' and question6 == 'Minimal':
                 score += 10
 
-            if hobby.creative.capitalize() == 'Yes' and question3 == 'Yes':
+            if hobby.creative.capitalize() == 'Yes' and question7 == 'Yes':
                 score += 10
-            elif hobby.creative.capitalize() == 'No' and question3 == 'No':
+            elif hobby.creative.capitalize() == 'No' and question7 == 'No':
                 score -= 10
 
-            if hobby.art.capitalize() == 'Yes' and question3 == 'Yes':
+            if hobby.art.capitalize() == 'Yes' and question8 == 'Yes':
                 score += 10
-            elif hobby.art.capitalize() == 'No' and question3 == 'No':
+            elif hobby.art.capitalize() == 'No' and question8 == 'No':
                 score -= 10
 
-            if hobby.craft.capitalize() == 'Yes' and question3 == 'Yes':
+            if hobby.craft.capitalize() == 'Yes' and question9 == 'Yes':
                 score += 10
-            elif hobby.craft.capitalize() == 'No' and question3 == 'No':
+            elif hobby.craft.capitalize() == 'No' and question9 == 'No':
                 score -= 10
 
-            if hobby.physicalexp.capitalize() == 'Yes' and question3 == 'Yes':
+            if hobby.physicalexp.capitalize() == 'Yes' and question10 == 'Yes':
                 score += 10
-            elif hobby.physicalexp.capitalize() == 'No' and question3 == 'No':
+            elif hobby.physicalexp.capitalize() == 'No' and question10 == 'No':
                 score -= 10
 
-            if hobby.cost.capitalize() == "It's free" and question3 == 'free':
+            if hobby.cost.capitalize() == "It's free" and question11 == 'free':
                 score += 100                
-            elif (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10') and question3 == 'LTT':
+            elif (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10') and question11 == 'LTT':
                 score += 100
-            elif  (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10' or hobby.cost.capitalize() == '$10-$50') and question3 == 'TTF':
+            elif  (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10' or hobby.cost.capitalize() == '$10-$50') and question11 == 'TTF':
                 score += 100
-            elif (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10' or hobby.cost.capitalize() == '$10-$50' or hobby.cost.capitalize() == '$50-$100') and question3 == 'FTH':
+            elif (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10' or hobby.cost.capitalize() == '$10-$50' or hobby.cost.capitalize() == '$50-$100') and question11 == 'FTH':
                 score += 100
-            elif (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10' or hobby.cost.capitalize() == '$10-$50' or hobby.cost.capitalize() == '$50-$100' or hobby.cost.capitalize() == 'More than $100') and question3 == 'MTH':
+            elif (hobby.cost.capitalize() == "It's free" or hobby.cost.capitalize() == 'Less than $10' or hobby.cost.capitalize() == '$10-$50' or hobby.cost.capitalize() == '$50-$100' or hobby.cost.capitalize() == 'More than $100') and question11 == 'MTH':
                 score += 100
             
             scores[hobby] = score
@@ -112,4 +112,4 @@ def survey_view(request):
         return render(request, 'main/survey.html')      
 
 def results(response):
-	return render(response, "main/results.html", {})
+    return render(response, "main/results.html", {})
