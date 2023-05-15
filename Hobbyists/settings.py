@@ -20,11 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-import os
-SECRET_KEY = os.environ.get('django-insecure--b*1y(42-$dn=$k$anpe(9n4rgfw+typ#g!t@ho&771z(e94oa')
+SECRET_KEY = 'django-insecure--b*1y(42-$dn=$k$anpe(9n4rgfw+typ#g!t@ho&771z(e94oa'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = ["192.168.0.157", "127.0.0.1"]
 
@@ -69,6 +70,7 @@ TEMPLATES = [
     },
 ]
 
+WSGI_APPLICATION = 'Hobbyists.wsgi.application'
 
 
 # Database
@@ -106,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'EST'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
