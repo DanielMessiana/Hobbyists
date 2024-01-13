@@ -1,0 +1,88 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<style>
+
+    .template {
+        text-align: initial;
+    }
+
+    .button {
+      border: 2px solid black;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin-top: auto;
+      margin-left: auto;
+      cursor: pointer;
+    }
+
+    .buttonback {
+        float: right;
+        margin-top: 200;
+        background: #4EDA16
+    }
+
+    .buttonsubmit {
+        margin-top: 1000;
+        background: #4EDA16;
+    }
+
+    #a2 {
+        margin-top: 10px;
+    }
+
+    @media (min-width: 600px) {
+        .buttonsubmit {
+        margin-left: 350;
+        margin-top: 1200;
+        background: #4EDA16;
+    }
+
+    }
+
+    .button:hover {
+        background: white;
+        color: black;
+    }
+
+    .square {
+        border-radius: 25px 25px 25px 25px;
+        margin: auto;
+        height: 1500px;
+        width: 75%;
+        border: 4px solid black;
+        background-color: white;
+        opacity: 0.7;
+    }
+
+    @media (min-width: 600px) {
+        .square {
+        border-radius: 25px 25px 25px 25px;
+        margin: auto;
+        height: 100%;
+        width: 40%;
+        border: 4px solid black;
+        background-color: white;
+        opacity: 0.7;
+    }
+    }
+
+</style>
+<div class="square">
+
+{% if top_hobbies %}
+  <h2 style="text-align:center;font-size:55;">Top Hobbies for you</h2>
+  <ul>
+    {% for hobby in top_hobbies %}
+      <p style="text-align:center;font-size:35;text-transform: capitalize;">{{ hobby }}</p>
+    {% endfor %}
+  </ul>
+{% endif %}
+</div>
+
+
+{% endblock %}
