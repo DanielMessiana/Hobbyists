@@ -8,4 +8,6 @@ hobbyists = Flask(__name__)
 def start():
 	return render_template("start.html")
 
-#@hobbyists.route("/survey")
+@hobbyists.route("/survey")
+def survey():
+	return render_template("survey.html")
