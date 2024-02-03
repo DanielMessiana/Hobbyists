@@ -1,4 +1,4 @@
-{% extends "main/base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
 <h1 style="margin-top:80px;text-align:center;color:#422B17;">Find the right hobby for you!</h1>
@@ -128,7 +128,6 @@
 
 <div class="square">
 <form method="post">
-    {% csrf_token %}
     <!-- sport -->
     <p class="question" style="width: 340px;">Are you looking for a sport?</p>
     <input type="radio" name="question1" value="Yes"> <span style="font-size:25px;">Yes</span><br>
