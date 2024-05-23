@@ -7,12 +7,12 @@ hobbyists = Flask(__name__)
 
 @hobbyists.route("/")
 def start():
-	return render_template("start.html")
+    return render_template("start.html")
 
 @hobbyists.route("/survey", methods=['POST'])
 def survey():
-	if request.method == 'POST':
-		question1 = request.POST.get('question1')
+    if request.method == 'POST':
+        question1 = request.POST.get('question1')
         question2 = request.POST.get('question2')
         question3 = request.POST.get('question3')
         question4 = request.POST.get('question4')
@@ -25,6 +25,7 @@ def survey():
         question11 = request.POST.get('question11')
 
         answers = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11]
-		return render_template("survey_results.html")
-	else:
-		return render_template("survey.html")
+        return render_template("survey_results.html")
+    else:
+        return render_template("survey.html")
+
