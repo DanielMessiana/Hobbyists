@@ -1,5 +1,6 @@
 # Hobbyists #
-A website meant to provide users with an accurate list of hobbies they would be interested in, based on a short survey.
+<img width="1598" alt="Screenshot 2024-05-24 at 13 16 09" src="https://github.com/DanielMessiana/Hobbyists/assets/40705754/65ff4b4a-ee4f-40ca-a77a-7e64969d0c61">
+A social media website meant to provide users with a place to find hobbies, share media about their hobbies, or find ways to participate in their hobby.
 
 This intends to serve as a foundation for a multi-use social media sort of platform, allowing for users to share images of their hobbies, or even sell/buy equipment related to the hobby. 
 
