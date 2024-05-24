@@ -7,7 +7,16 @@ hobbyists = Flask(__name__)
 
 @hobbyists.route("/")
 def start():
+    if request.method == 'POST':
+        hobby = request.form.get('hobbies')
+
+        return(str(hobby))
+
     return render_template("start.html")
+
+@hobbyists.route('/join')
+def join():
+    return render_template("join.html")
 
 @hobbyists.route("/survey", methods=['POST'])
 def survey():

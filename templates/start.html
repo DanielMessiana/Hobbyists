@@ -62,11 +62,32 @@ img.resize {
 
 .leftcolumn {
 	border-radius: 15px;
+  border: 5px solid #241E19;
 	height: 75%;
-	width: 25%;
-	
+	width: 20%;
+  background-color: white;
+  opacity: 0.7;
+  position: absolute;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-left: 50px;
 
 }
+
+h2 {
+  font-size: 25px;
+}
+
+.hobbydropdown {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 
 .middle {
   border-radius: 25px;
@@ -75,8 +96,8 @@ img.resize {
   height: 75%;
   width: 75%;
   opacity: 0.7;
-  position: absolute;
-  left: 50px;
+  margin: 0 auto;
+  margin-left: 150px;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -107,6 +128,11 @@ img.resize {
   margin-top: 30px;
   color: #422B17;
 }
+
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+
 </style>
 
 <div class="header">
@@ -115,6 +141,17 @@ img.resize {
 
 <div class="row">
   <div class="col-2"></div>
+  <div class="col-1 leftcolumn">
+    <h2>Visit our hobby pages!</h2>
+    <form method="post">
+      <select name="hobbies" id="hobbies" class="hobbydropdown">
+        <option value="start">Choose a hobby</option>
+        <option value="hobby1">Hobby 1</option>
+      </select>
+    </form>
+    <hr class="solid">
+    
+  </div>
   <div class="col-10 middle">
     <h1 class="h1f text">Welcome to Hobbyists</h1>
     <div style="margin-bottom: 10px;">
@@ -125,7 +162,7 @@ img.resize {
       <p class="text">Looking for hobbies? Take our quiz to find out what's best for you!</p>
       <a href="/survey"><button class="button button1">Start Test</button></a>
     </div>
-  </div>  
+  </div> 
 </div>
 
 {% endblock %}
