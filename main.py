@@ -2,22 +2,75 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import url_for
+import sqlite3
 
 hobbyists = Flask(__name__)
 
+# User database for storing user information
+connection = sqlite3.connect('databases/users.db')
+cursor = connection.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS users (
+    username TEXT,
+    password TEXT,
+    email TEXT,
+    hobbies TEXT
+)
+""")
+connection.commit()
+connection.close()
+
+# Start page for the website
 @hobbyists.route("/")
 def start():
     if request.method == 'POST':
         hobby = request.form.get('hobbies')
 
-        return(str(hobby))
+        print(hobby)
 
     return render_template("start.html")
 
+# Sign up page for the website
 @hobbyists.route('/join')
 def join():
-    return render_template("join.html")
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        email = request.form.get('email')
 
+        connection = sqlite3.connect('databases/users.db')
+        cursor = connection.cursor()
+
+        cursor.execute("INSERT INTO users (username, password, email) VALUES (?, ?, ?)", (username, password, email))
+        connection.commit()
+        connection.close()
+
+        return render_template("join.html")
+    else:
+        return render_template("join.html")
+
+# Login page for the website
+@hobbyists.route('/login')
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        connection = sqlite3.connect('databases/users.db')
+        cursor = connection.cursor()
+
+        cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
+        user = cursor.fetchone()
+
+        if user:
+            return render_template("login.html")
+        else:
+            return render_template("login.html")
+    else:
+        return render_template("login.html")
+
+# Survey page for our hobby ai
 @hobbyists.route("/survey", methods=['POST'])
 def survey():
     if request.method == 'POST':

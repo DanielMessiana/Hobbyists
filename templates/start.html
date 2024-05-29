@@ -2,38 +2,17 @@
 
 {% block content %}
 <style>
-.col-1 {width: 8.33%;}
-.col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
-.col-4 {width: 33.33%;}
-.col-5 {width: 41.66%;}
-.col-6 {width: 50%;}
-.col-7 {width: 58.33%;}
-.col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
-.col-10 {width: 83.33%;}
-.col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
-
-[class*="col-"] {
-  float: left;
-  padding: 15px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.row::after {
-  content: "";
-  clear: both;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.col-1, .col-2, .col-10 {
-  padding: 15px;
-}
-
-img.resize {
-  max-width: 40%;
-  max-height: 40%;
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .button {
@@ -65,19 +44,26 @@ img.resize {
   background: #4EDA16;
 }
 
+.main-container {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
 .leftcolumn {
 	border-radius: 15px;
   border: 5px solid #241E19;
-	height: 75%;
-	width: 20%;
   background-color: white;
   opacity: 0.7;
-  position: absolute;
   padding: 20px;
+  height: 75%;
+  width: 20%;
   box-sizing: border-box;
-  margin-left: 50px;
-  flex: 1 1 20%;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h2 {
@@ -99,24 +85,17 @@ h2 {
   border-radius: 25px;
   border: 5px solid #241E19;
   background-color: white;
-  height: 75%;
-  width: 75%;
   opacity: 0.7;
-  margin: 0 auto;
-  margin-left: 150px;
   padding: 20px;
+  width: 50%;
+  height: 75%;
   box-sizing: border-box;
-  flex: 1 1 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
 }
 
-@media (min-width: 600px) {
-  .middle {
-    height: 70%;
-    width: 50%;
-    position: relative;
-    left: 8.33%;
-  }
-}
 
 .text {
   font-size: 25px;
@@ -142,13 +121,8 @@ hr.solid {
 
 </style>
 
-<div class="header">
-  <img class="resize" src={{ url_for('static', filename='logo.png') }}>
-</div>
-
-<div class="row">
-  <div class="col-2"></div>
-  <div class="col-1 leftcolumn">
+<div class="main-container">
+  <div class="leftcolumn">
     <h2>Visit our hobby pages!</h2>
     <form method="post">
       <select name="hobbies" id="hobbies" class="hobbydropdown">
@@ -157,16 +131,12 @@ hr.solid {
       </select>
     </form>
     <hr class="solid">
-    
   </div>
-  <div class="col-10 middle">
+  <div class="middle">
     <h1 class="h1f text">Welcome to Hobbyists</h1>
-    <div style="margin-bottom: 10px;">
-      <p class="text">Already know your hobbies? Join us and share them!</p>
-      <a href="/join"><button class="button button1">Join</button></a>
-    </div>
     <div style="margin-top: 80px;">
       <p class="text">Looking for hobbies? Take our quiz to find out what's best for you!</p>
+      <br>
       <a href="/"><button class="button button1">Start Test</button></a>
     </div>
   </div> 
