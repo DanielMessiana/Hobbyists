@@ -2,9 +2,15 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import url_for
+from flask import session
+from flask_login import LoginManager
 import sqlite3
 
 hobbyists = Flask(__name__)
+hobbyists.secret_key = '046cfd55fa729b4ebc206d2f47387019f1ba8807c820943bb8ea26d6596f807e'
+
+login_manager = LoginManager()
+login_manager.init_app(hobbyists)
 
 # User database for storing user information
 connection = sqlite3.connect('databases/users.db')
@@ -21,15 +27,25 @@ CREATE TABLE IF NOT EXISTS users (
 connection.commit()
 connection.close()
 
+@login_manager.user_loader
+def load_user(user_id):
+    connection = sqlite3.connect('databases/users.db')
+    cursor = connection.cursor()
+
+    cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
+    user = cursor.fetchone()
+
+    return user
+
 # Start page for the website
 @hobbyists.route("/")
-def start():
+def index():
     if request.method == 'POST':
         hobby = request.form.get('hobbies')
 
         print(hobby)
 
-    return render_template("start.html")
+    return render_template("index.html")
 
 # Sign up page for the website
 @hobbyists.route('/join')
@@ -51,7 +67,7 @@ def join():
         return render_template("join.html")
 
 # Login page for the website
-@hobbyists.route('/login')
+@hobbyists.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
@@ -64,11 +80,17 @@ def login():
         user = cursor.fetchone()
 
         if user:
+            login_user(user)
+
+            next = request.args.get('next')
+
+            if not is_safe_url(next):
+                return abort(400)
+
             return render_template("login.html")
-        else:
-            return render_template("login.html")
-    else:
         return render_template("login.html")
+
+    return render_template("login.html")
 
 # Survey page for our hobby ai
 @hobbyists.route("/survey", methods=['POST'])

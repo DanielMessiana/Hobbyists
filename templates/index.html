@@ -15,71 +15,24 @@ html, body {
   padding: 0;
 }
 
-.button {
-  border: none;
-  color: white;
-  padding: 10px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 25px;
-  cursor: pointer;
-}
-
-@media (min-width: 600px) {
-  .button {
-    padding: 15px 32px;
-    font-size: 25px;
-  }
-}
-
-.button:hover {
-  background-color: white;
-  color: black;
-}
-
 .button1 {
   border-radius: 15px;
-  border: 3px solid #4EDA16;
-  background: #4EDA16;
+  border: 3px solid #6db474;
+  background: #62a268;
 }
 
 .main-container {
   display: flex;
-  padding: 20px;
+  padding: 10px;
   gap: 20px;
   box-sizing: border-box;
   height: 100vh;
-}
-
-.leftcolumn {
-	border-radius: 15px;
-  border: 5px solid #241E19;
-  background-color: white;
-  opacity: 0.7;
-  padding: 20px;
-  height: 75%;
-  width: 20%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: start;
 }
 
 h2 {
   font-size: 25px;
 }
-
-.hobbydropdown {
-  width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
 
 .middle {
   border-radius: 25px;
@@ -96,6 +49,10 @@ h2 {
   align-items: center;
 }
 
+.resize {
+  width: 30%;
+  height: 50%;
+}
 
 .text {
   font-size: 25px;
@@ -112,7 +69,7 @@ h2 {
 
 .h1f {
   margin-top: 30px;
-  color: #422B17;
+  color: #6F8FAF;
 }
 
 hr.solid {
@@ -122,16 +79,7 @@ hr.solid {
 </style>
 
 <div class="main-container">
-  <div class="leftcolumn">
-    <h2>Visit our hobby pages!</h2>
-    <form method="post">
-      <select name="hobbies" id="hobbies" class="hobbydropdown">
-        <option value="start">Choose a hobby</option>
-        <option value="hobby1">Hobby 1</option>
-      </select>
-    </form>
-    <hr class="solid">
-  </div>
+  <img class="resize" src={{ url_for('static', filename='logo.png') }}>
   <div class="middle">
     <h1 class="h1f text">Welcome to Hobbyists</h1>
     <div style="margin-top: 80px;">

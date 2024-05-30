@@ -21,14 +21,14 @@ html, body {
 
 .template {
 	text-align: center;
-	background-color: #E8C1A0;
+	background-color: #6F8FAF;
 }
 
 .header {
   background-color: white;
   border-radius: 8px;
   border: 3px solid #241E19;
-  height: 80px;
+  height: 95px;
   width: 100%;
   display: flex;
   margin-bottom: 20px;
@@ -36,12 +36,6 @@ html, body {
   box-sizing: border-box;
   align-items: center;
   padding: 0 1px;
-}
-
-.resize {
-	border: 2px solid #241E19;
-	width: 10%;
-	height: 100%;
 }
 
 .button-container {
@@ -52,12 +46,24 @@ html, body {
 
 .button {
 	border-radius: 15px;
-  border: 3px solid #4EDA16;
-  background: #4EDA16;
+  border: 3px solid #6db474;
+  background: #62a268;
   padding: 10px 15px;
   text-align: center;
   font-size: 25px;
   cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .button {
+    padding: 15px 32px;
+    font-size: 25px;
+  }
+}
+
+.button:hover {
+  background-color: white;
+  color: black;
 }
 
 </style>
@@ -66,7 +72,7 @@ html, body {
 <body class="template">
 
 	<div class="header">
-  	<img class="resize" src={{ url_for('static', filename='logo.png') }}>
+  	
   	<div class="button-container">
 	  	<a href="/join"><button class="button">Sign up</button></a>
 	  	<a href="/login"><button class="button">Log in</button></a>
