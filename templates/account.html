@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+.middlebox {
+	border-radius: 25px;
+	border: 5px solid #241E19;
+	background-color: white;
+	height: 75%;
+	width: 75%;
+	opacity: 0.7;
+	margin: 0 auto;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+
+</style>
+
+<div class="middlebox">
+	<h2>Account</h2>
+	<h3>Username: {{ current_user.username }}</h3>
+	<h3>Email: {{ current_user.email }}</h3>
+	<form method="post">
+		<div class="container">
+			<button type="submit">Log out</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

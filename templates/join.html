@@ -21,19 +21,34 @@ label {
 	padding: 10px;
 }
 
+.flashes {
+	color: red;
+	font-size: 18px;
+}
+
 </style>
 
 <br>
 <div class="middlebox">
 	<h2>Join</h2>
+	{% with messages = get_flashed_messages(with_categories=True) %}
+		{% if messages %}
+			<ul class="flashes">
+				{% for category, message in messages %}
+					<li  class="{{ category }}">{{ message }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+
 	<form method="post">
 		<div class="container">
-			<label for="uname"><b>Username</b></label>
-			<input type="text" placeholder="Enter Username" name="uname" required>
+			<label for="username"><b>Username</b></label>
+			<input type="text" placeholder="Enter Username" name="username" required>
 			<br> <br>
 
-			<label for="psw"><b>Password</b></label>
-			<input type="text" placeholder="Enter Password" name="psw" required>
+			<label for="password"><b>Password</b></label>
+			<input type="text" placeholder="Enter Password" name="password" required>
 			<br> <br>
 
 			<label for="email"><b>Email</b></label>
