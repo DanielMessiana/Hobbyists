@@ -30,13 +30,13 @@ def join():
         password = request.form.get('password')
         email = request.form.get('email')
 
-        user = User.query.filter_by(username=username).first()
-        if user:
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
             flash("Username already exists", "danger")
             return redirect(url_for('join'))
 
-        email = User.query.filter_by(email=email).first()
-        if email:
+        existing_email = User.query.filter_by(email=email).first()
+        if existing_email:
             flash("Email already exists", "danger")
             return redirect(url_for('join'))
 
@@ -71,10 +71,15 @@ def login():
 @login_required
 def account():
     if request.method == 'POST':
-        logout_user()
-        flash("Logout successful", "success")
-        return redirect(url_for('home'))
-
+        if request.form.get('delete'):
+            db.session.delete(current_user)
+            db.session.commit()
+            flash("Account deleted", "success")
+            return redirect(url_for('home'))
+        elif request.form.get('logout'):
+            logout_user()
+            flash("Logout successful", "success")
+            return redirect(url_for('home'))
     else:
         return render_template("account.html")
 

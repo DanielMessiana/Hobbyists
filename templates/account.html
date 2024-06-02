@@ -16,6 +16,9 @@
 	box-sizing: border-box;
 }
 
+h2 {
+	font-size: 25px;
+}
 
 </style>
 
@@ -25,9 +28,13 @@
 	<h3>Email: {{ current_user.email }}</h3>
 	<form method="post">
 		<div class="container">
-			<button type="submit">Log out</button>
+			<button class="button" type="submit" name="logout" value="logout">Log out</button>
+		</div>
+		<div class="container">
+			<button class="button" type="submit" name="delete" value="delete">Delete account</button>
 		</div>
 	</form>
+
 </div>
 
 {% endblock %}

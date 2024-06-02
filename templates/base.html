@@ -78,6 +78,11 @@ html, body {
 	text-decoration: none;
 }
 
+.flashes {
+	color: red;
+	font-size: 24px;
+}
+
 </style>
 </head>
 
@@ -94,6 +99,15 @@ html, body {
 		  </div>
 		{% endif %}
 	</div>
+	{% with messages = get_flashed_messages(with_categories=True) %}
+		{% if messages %}
+			<ul class="flashes">
+				{% for category, message in messages %}
+					<li  class="{{ category }}">{{ message }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
 	<div id="content", name="content", class="main">
 		{% block content %}
 		{% endblock %}
