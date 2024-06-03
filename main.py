@@ -109,4 +109,4 @@ with hobbyists.app_context():
     db.create_all()
 
 if __name__ == '__main__':
-    hobbyists.run(debug=True)
+    hobbyists.run(host="0.0.0.0", port=5000)

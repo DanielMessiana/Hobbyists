@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: hobbyists
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn --config gunicorn_config.py main:hobbyists"
