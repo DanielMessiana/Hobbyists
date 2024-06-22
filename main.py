@@ -102,7 +102,6 @@ def survey():
         answers = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11]
         return render_template("survey_results.html")
     else:
-
         return render_template("survey.html")
 
 with hobbyists.app_context():
