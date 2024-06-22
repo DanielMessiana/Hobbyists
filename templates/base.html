@@ -1,98 +1,102 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-<link rel="shortcut icon" href="{{ url_for('static', filename='h.ico') }}">
+
+
 
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='h.ico') }}">
 	<title> Hobbyists </title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+	<style>
+		* {
+		  box-sizing: border-box;
+		  margin: 0;
+		  padding: 0;
+		}
 
-html, body {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
+		html, body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
 
-.template {
-	text-align: center;
-	background-color: #6F8FAF;
-}
+		.template {
+			text-align: center;
+			background-color: #6F8FAF;
+		}
 
-.header {
-  background-color: white;
-  border-radius: 8px;
-  border: 3px solid #241E19;
-  height: 95px;
-  width: 100%;
-  display: flex;
-  margin-bottom: 20px;
-  opacity: 0.7;
-  box-sizing: border-box;
-  align-items: center;
-  padding: 0 1px;
-}
+		.header {
+		  background-color: white;
+		  border-radius: 8px;
+		  border: 3px solid #241E19;
+		  height: 95px;
+		  width: 100%;
+		  display: flex;
+		  margin-bottom: 20px;
+		  opacity: 0.7;
+		  box-sizing: border-box;
+		  align-items: center;
+		  padding: 0 1px;
+		}
 
-.resize {
-  width: 30%;
-  height: 50%;
-}
+		.resize {
+		  width: 30%;
+		  height: 50%;
+		}
 
-.button-container {
-	margin-left: auto;
-	display: flex;
-	gap: 10px;
-}
+		.button-container {
+			margin-left: auto;
+			display: flex;
+			gap: 10px;
+		}
 
-.button {
-	border-radius: 15px;
-  border: 3px solid #6db474;
-  background: #62a268;
-  padding: 10px 15px;
-  text-align: center;
-  font-size: 25px;
-  cursor: pointer;
-}
+		.button {
+			border-radius: 15px;
+		  border: 3px solid #6db474;
+		  background: #62a268;
+		  padding: 10px 15px;
+		  text-align: center;
+		  font-size: 25px;
+		  cursor: pointer;
+		}
 
-@media (min-width: 600px) {
-  .button {
-    padding: 15px 32px;
-    font-size: 25px;
-  }
-}
+		@media (min-width: 600px) {
+		  .button {
+		    padding: 15px 32px;
+		    font-size: 25px;
+		  }
+		}
 
-.button:hover {
-  background-color: white;
-  color: black;
-}
+		.button:hover {
+		  background-color: white;
+		  color: black;
+		}
 
-.account-container {
-	display: flex;
-	gap: 10px;
-	margin-left: auto;
-	padding-right: 15px;
-}
+		.account-container {
+			display: flex;
+			gap: 10px;
+			margin-left: auto;
+			padding-right: 15px;
+		}
 
-.account-container a {
-	font-size: 30px;
-	text-decoration: none;
-}
+		.account-container a {
+			font-size: 30px;
+			text-decoration: none;
+		}
 
-.flashes {
-	color: red;
-	font-size: 24px;
-}
+		.flashes {
+			color: red;
+			font-size: 24px;
+		}
 
-</style>
+	</style>
 </head>
 
 <body class="template">
-	<div class="header">
+	<header class="header">
   	{% if current_user.is_authenticated %}
   		<div class="account-container">
 				<h2><a href="/account">{{ current_user.username }}</a></h2>
@@ -103,7 +107,7 @@ html, body {
 		  	<a href="/login"><button class="button">Log in</button></a>
 		  </div>
 		{% endif %}
-	</div>
+	</header>
 	{% with messages = get_flashed_messages(with_categories=True) %}
 		{% if messages %}
 			<ul class="flashes">
@@ -113,10 +117,10 @@ html, body {
 			</ul>
 		{% endif %}
 	{% endwith %}
-	<div id="content", name="content", class="main">
+	<main id="content" name="content" class="main">
 		{% block content %}
 		{% endblock %}
-	</div>
+	</main>
 </body>
 
 </html>
