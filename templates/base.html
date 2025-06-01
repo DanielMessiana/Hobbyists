@@ -23,7 +23,7 @@
 			padding: 0;
 		}
 
-		.template {
+		.site-wrapper {
 			text-align: center;
 			background-color: #6F8FAF;
 		}
@@ -47,7 +47,7 @@
 		  height: 50%;
 		}
 
-		.button-container {
+		.auth-nav {
 			margin-left: auto;
 			display: flex;
 			gap: 10px;
@@ -95,17 +95,17 @@
 	</style>
 </head>
 
-<body class="template">
+<body class="site-wrapper">
 	<header class="header">
   	{% if current_user.is_authenticated %}
   		<div class="account-container">
 				<h2><a href="/account">{{ current_user.username }}</a></h2>
 			</div>
 		{% else %}
-			<div class="button-container">
+			<nav class="auth-nav">
 		  	<a href="/join"><button class="button">Sign up</button></a>
 		  	<a href="/login"><button class="button">Log in</button></a>
-		  </div>
+		  </nav>
 		{% endif %}
 	</header>
 	{% with messages = get_flashed_messages(with_categories=True) %}
@@ -117,7 +117,7 @@
 			</ul>
 		{% endif %}
 	{% endwith %}
-	<main id="content" name="content" class="main">
+	<main id="content" class="main" role="main">
 		{% block content %}
 		{% endblock %}
 	</main>
