@@ -3,15 +3,23 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 
-<section class="main-container">
-  <div class="middle">
-    <h1 class="h1f text">Welcome to Hobbyists</h1>
-    <div style="margin-top: 80px;">
-      <p class="text">Looking for hobbies? Speak with our AI and find out what's best for you!</p>
-      <br>
-      <a href="/survey"><button class="button surveybutton">Start Test</button></a>
+<section class="column">
+  <section class="row1">
+    <div class="test-wrapper">
+      <h1 class="h1f text">Welcome to Hobbyists</h1>
+      <div style="margin-top: 80px;">
+        <p class="text">Looking for hobbies? Speak with our AI and find out what's best for you!</p>
+        <br>
+        <a href="/survey"><button class="button surveybutton">Start Test</button></a>
+      </div>
     </div>
-  </div> 
+    <div class="join-wrapper">
+      
+    </div> 
+  </section>
+  <section class="row2">
+
+  </section>
 </section>
 
 {% endblock %}

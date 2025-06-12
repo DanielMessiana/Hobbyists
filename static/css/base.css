@@ -9,21 +9,20 @@ html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .site-wrapper {
 	text-align: center;
-	background-color: #cf9bb1;
 }
 
 .header {
+  position: sticky;
+  top: 0;
   background-color: #f5e6ef;
-  border-radius: 8px;
-  border: 3px solid #241E19;
-  height: 95px;
+  height: auto;
   width: 100%;
   display: flex;
-  margin-bottom: 20px;
   box-sizing: border-box;
   align-items: center;
   padding: 0 1px;
@@ -46,7 +45,7 @@ html, body {
   background: #9bcfaa;
   padding: 10px 15px;
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   cursor: pointer;
 }
 
