@@ -1,215 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 style="margin-top:80px;text-align:center;color:#422B17;">Find the right hobby for you!</h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/survey.css') }}">
 
+<section class="column">
+	<section class="row1">
+		<div class="survey-wrapper">
+			<p id="ai-message">Loading...</p>
 
+			<h3>Your Response</h3>
+			<form id="survey-form">
+				<label for="answer">What's your first thought?</label><br>
+				<input type="text" id ="answer" name="answer"><br><br>
+				<button type=submit>Submit</button>
+			</form>
 
-<style>
+			<script>
+				// Get AI-generated message when page loads
+				window.onload = async function() {
+					const res = await fetch('/generate-intro');
+					const data = await res.json();
+					document.getElementById('ai-message').innerText = data.response || data.error;
+				};
 
-	.template {
-		text-align: initial;
-	}
-
-	.button {
-	  border: 2px solid black;
-	  color: white;
-	  padding: 15px 32px;
-	  text-align: center;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 20px;
-	  margin-top: auto;
-	  margin-left: auto;
-	  cursor: pointer;
-	}
-
-	.buttonback {
-		float: right;
-		margin-top: 200;
-		background: #4EDA16
-	}
-
-	.buttonsubmit {
-		margin-top: 1000;
-		background: #4EDA16;
-	}
-
-	#a2 {
-  		margin-top: 10px;
-	}
-
-	@media (min-width: 600px) {
-		.buttonsubmit {
-		margin-left: 350;
-		margin-top: 1200;
-		background: #4EDA16;
-	}
-
-	}
-
-	.button:hover {
-		background: white;
-		color: black;
-	}
-
-	.square {
-		border-radius: 25px 25px 25px 25px;
-		margin: auto;
-		height: 1500px;
-		width: 75%;
-		border: 4px solid black;
-		background-color: white;
-		opacity: 0.7;
-	}
-
-	@media (min-width: 600px) {
-		.square {
-		border-radius: 25px 25px 25px 25px;
-		margin: auto;
-		height: 265%;
-		width: 40%;
-		border: 4px solid black;
-		background-color: white;
-		opacity: 0.7;
-	}
-	}
-
-	.question {
-		border-radius: 15px 15px 15px 15px;
-		height: 50px;
-		width: 500px;
-		border: 4px solid black;
-		background-color: white;
-		font-size: 125%;
-		text-align: center;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 10px;
-	}
-
-	@media (min-width: 600px) {
-		.question {
-			font-size: 25;
-			text-align: center;
-		}
-	}
-
-	.answer {
-		font-size: 30;
-		text-align: center;
-	}
-
-	input[type='radio'] { 
-    	transform: scale(1.5); 
-    	margin-left: auto;
-		margin-right: auto;
- 	}
-
- 	@media (min-width: 600px) {
- 		.answer {
-			font-size: 40;
-		}
-
-		input[type='radio'] { 
-    		transform: scale(2.3);
-    		margin-left: 49%;
-    		margin-right:10px;
- 		}
-
- 		input[type='checkbox'] { 
-    		transform: scale(2.3);
-    		margin-left: 49%;
-    		margin-right:10px;
- 		}
-	}
-
-</style>
-
-<div class="square">
-<form method="post">
-    <!-- sport -->
-    <p class="question" style="width: 340px;">Are you looking for a sport?</p>
-    <input type="radio" name="question1" value="Yes"> <span style="font-size:25px;">Yes</span><br>
-    <input type="radio" style="margin-top:30px" name="question1" value="No"> <span style="font-size:25px;">No</span><br>
-
-    <!-- speed -->
-    <p class="question" style="margin-top:40px;width: 540px;">Are you looking for a slow or fast paced hobby?</p>
-    <input type="radio" name="question2" value="Slow"> <span style="font-size:25px;">Slow</span><br>
-    <input type="radio" style="margin-top:30px" name="question2" value="Fast"> <span style="font-size:25px;">Fast</span><br>
-
-    <!-- intellectual -->
-    <p class="question" style="margin-top:40px;width: 625px;">Are you looking for an intellectually challenging hobby?</p>
-    <input type="radio" name="question3" value="Yes"> <span style="font-size:25px;">Yes</span><br>
-    <input type="radio" style="margin-top:30px" name="question3" value="No"> <span style="font-size:25px;">No</span><br>
-
-    <!-- focus -->
-    <p class="question" style="margin-top:40px;width: 415px;">What should your hobby focus on?</p>
-    <input type="checkbox" name="question4" value="Spiritual"> <span style="font-size:25px;">Spiritual</span><br>
-    <input type="checkbox" style="margin-top:30px" name="question4" value="Animal"> <span style="font-size:25px;">Animal</span><br>
-    <input type="checkbox" style="margin-top:30px" name="question4" value="Physical"> <span style="font-size:25px;">Physical</span><br>
-    <input type="radio" style="margin-top:30px" name="question4" value="None" onclick="disableCheckboxes()"> <span style="font-size:25px;">None of the above</span><br>
-
-	<script>
-	function disableCheckboxes() {
-	  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-	  checkboxes.forEach(function(checkbox) {
-	    checkbox.disabled = true;
-
-	  });
-	}
-	</script>
-
-	<!-- Social -->
-    <p class="question" style="margin-top:40px">Should your hobby be alone or with others?</p>
-    <input type="radio" name="question5" value="Alone"> <span style="font-size:25px;">Alone</span><br>
-    <input type="radio" style="margin-top:30px" name="question5" value="Group"> <span style="font-size:25px;">With others</span><br>
-    <input type="radio" style="margin-top:30px" name="question5" value="Either"> <span style="font-size:25px;">Either</span><br>
-
-    <!-- Time -->
-    <p class="question" style="margin-top:40px;width: 425px;">How long should your hobby take?</p>
-    <input type="radio" name="question6" value="Alot"> <span style="font-size:25px;">A longer time</span><br>
-    <input type="radio" style="margin-top:30px" name="question6" value="InBetween"> <span style="font-size:25px;">In between</span><br>
-    <input type="radio" style="margin-top:30px" name="question6" value="Minimal"> <span style="font-size:25px;">A shorter time</span><br>
-
-    <!-- Creative -->
-    <p class="question" style="margin-top:40px;width: 450px;">Are you looking for a creative hobby?</p>
-    <input type="radio" name="question7" value="Yes"> <span style="font-size:25px;">Yes</span><br>
-    <input type="radio" style="margin-top:30px" name="question7" value="No"> <span style="font-size:25px;">No</span><br>
-
-    <!-- Art -->
-    <p class="question" style="margin-top:40px">Are you looking for an art related hobby?</p>
-    <input type="radio" name="question8" value="Yes"> <span style="font-size:25px;">Yes</span><br>
-    <input type="radio" style="margin-top:30px" name="question8" value="No"> <span style="font-size:25px;">No</span><br>
-
-    <!-- Craftmanship -->
-    <p class="question" style="margin-top:40px;width: 555px;">Do you want to make something with your hands?</p>
-    <input type="radio" name="question9" value="Yes"> <span style="font-size:25px;">Yes</span><br>
-    <input type="radio" style="margin-top:30px" name="question9" value="No"> <span style="font-size:25px;">No</span><br>
-
-    <!-- Physicalexp -->
-    <p class="question" style="margin-top:40px">Do you want to physically express yourself?</p>
-    <input type="radio" name="question10" value="Yes"> <span style="font-size:25px;">Yes</span><br>
-    <input type="radio" style="margin-top:30px" name="question10" value="No"> <span style="font-size:25px;">No</span><br>
-
-    <!-- Cost -->
-    <p class="question" style="margin-top:40px;width: 555px;">How much are you looking to spend on a hobby?</p>
-    <input type="radio" name="question11" value="free"> <span style="font-size:25px;">0</span><br>
-    <input type="radio" style="margin-top:30px" name="question11" value="LTT"> <span style="font-size:25px;">Less than $10</span><br>
-    <input type="radio" style="margin-top:30px" name="question11" value="TTF"> <span style="font-size:25px;">$10-$50</span><br>
-    <input type="radio" style="margin-top:30px" name="question11" value="FTH"> <span style="font-size:25px;">$50-$100</span><br>
-    <input type="radio" style="margin-top:30px" name="question11" value="MTH"> <span style="font-size:25px;">More than $100</span><br>
-
-    <br>
-
-    <input type="submit" style="margin-top:30px;margin-left:90%" value="Submit">
-</form>
-
-</div>
-<br></br>
-<a href="/"><button class="button buttonback">Back to Start</button></a>
-
-
-
+				// Placeholder for future form handling
+				document.getElementById('survey-form').addEventListener('submit', function (e) {
+					e.preventDefault();
+					alert('Response submitted! (This is just a placeholder)')
+				});
+			</script>
+		</div>
+	</section>
+</section>
 
 {% endblock %}

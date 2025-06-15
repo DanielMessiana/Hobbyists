@@ -8,7 +8,7 @@
 .row1 {
   display: flex;
   justify-content: space-between;
-  background-color: #cf9bb1;
+  background-color: #6792b7;
   box-sizing: border-box;
   width: 100%;
   height: 80vh;
@@ -16,23 +16,8 @@
 
 .test-wrapper {
   border-radius: 25px;
-  border: 5px solid #241E19;
-  background-color: #f5e6ef;
-  padding: 20px;
-  width: 42%;
-  height: 60vh;
-  margin: auto;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-}
-
-.join-wrapper {
-  border-radius: 25px;
-  border: 5px solid #241E19;
-  background-color: #f5e6ef;
+  border: 3px solid #241E19;
+  background-color: #c6dff4 ;
   padding: 20px;
   width: 42%;
   height: 60vh;
@@ -51,7 +36,40 @@
 }
 
 .text {
+  margin-top: 30px;
   font-size: 25px;
+  color: #6db474;
+}
+
+p {
+  font-size: 25px;
+}
+
+.join-wrapper {
+  border-radius: 25px;
+  border: 3px solid #241E19;
+  background-color: #c6dff4;
+  padding: 20px;
+  width: 42%;
+  height: 60vh;
+  margin: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.selectize-control {
+  width: 80%;
+}
+
+.submitbutton {
+  border-radius: 15px;
+  border: 3px solid #6db474;
+  background: #9bcfaa;
+  margin-top: 20px;
+  width: 22%;
 }
 
 @media (min-width: 600px) {
@@ -63,11 +81,6 @@
   }
 }
 
-.h1f {
-  margin-top: 30px;
-  color: #6db474;
-}
-
 hr.solid {
   border-top: 3px solid #bbb;
 }
@@ -75,7 +88,7 @@ hr.solid {
 .row2 {
   display: flex;
   justify-content: space-between;
-  background-color: #f5e6ef;
+  background-color: #c6dff4;
   gap: 20px;
   box-sizing: border-box;
   width: 100%;

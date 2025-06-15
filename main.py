@@ -1,5 +1,5 @@
-import os
-from flask import Flask, render_template, request, url_for, redirect, flash, session
+import os, requests, json
+from flask import Flask, render_template, request, url_for, redirect, flash, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
 from models import db, User
@@ -13,6 +13,8 @@ db.init_app(hobbyists)
 login_manager = LoginManager(hobbyists)
 login_manager.login_view = 'login'
 
+OLLAMA_URL = "http://localhost:11434/api/generate"
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -21,6 +23,12 @@ def load_user(user_id):
 @hobbyists.route("/")
 def home():
     return render_template("index.html")
+
+@hobbyists.route('/api/hobbies')
+def get_hobbies():
+    with open('api/hobbies.json') as f:
+        hobbies = json.load(f)
+    return jsonify(hobbies)
 
 # Sign up page for the website
 @hobbyists.route('/join', methods=['GET', 'POST'])
@@ -83,26 +91,27 @@ def account():
     else:
         return render_template("account.html")
 
-# Survey page for our hobby ai
-@hobbyists.route("/survey", methods=['POST'])
+# Survey page with LLM
+@hobbyists.route("/survey", methods=['GET', 'POST'])
 def survey():
-    if request.method == 'POST':
-        question1 = request.POST.get('question1')
-        question2 = request.POST.get('question2')
-        question3 = request.POST.get('question3')
-        question4 = request.POST.get('question4')
-        question5 = request.POST.get('question5')
-        question6 = request.POST.get('question6')
-        question7 = request.POST.get('question7')
-        question8 = request.POST.get('question8')
-        question9 = request.POST.get('question9')
-        question10 = request.POST.get('question10')
-        question11 = request.POST.get('question11')
+    return render_template("survey.html")
 
-        answers = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11]
-        return render_template("survey_results.html")
+@hobbyists.route("/generate-intro")
+def generate_intro():
+    payload = {
+        "model": "mistral",
+        "prompt": "You are a friendly assistant helping a user find new hobbies by giving them a short survey.",
+        "stream": False
+    }
+
+    response = requests.post(OLLAMA_URL, json=payload)
+    if response.status_code == 200:
+        data = response.json()
+        return jsonify({"response": data.get("response", "")})
     else:
-        return render_template("survey.html")
+        return jsonify({"error": "Failed to connect to Ollama"}), 500
+
+
 
 with hobbyists.app_context():
     db.create_all()

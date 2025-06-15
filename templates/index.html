@@ -2,24 +2,61 @@
 
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.default.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
 
 <section class="column">
   <section class="row1">
     <div class="test-wrapper">
-      <h1 class="h1f text">Welcome to Hobbyists</h1>
+      <h1 class="text">Welcome to Hobbyists</h1>
       <div style="margin-top: 80px;">
-        <p class="text">Looking for hobbies? Speak with our AI and find out what's best for you!</p>
+        <p >Looking for hobbies? Speak with our AI and find out</p><p> what's best for you!</p>
         <br>
         <a href="/survey"><button class="button surveybutton">Start Test</button></a>
       </div>
     </div>
     <div class="join-wrapper">
-      
+      <h1 class="text">Already know your hobbies?</h1>
+      <div style="margin-top: 30px;">
+        <form method="POST">
+          <label for="hobbies">Search and select your hobbies:</label><br>
+          <select id="hobbies" name="hobbies[]" multiple></select>
+          <button type="submit" class="button submitbutton">Submit</button>
+        </form>
+      </div>
     </div> 
   </section>
   <section class="row2">
 
   </section>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", async function () {
+    const select = document.getElementById('hobbies');
+
+    try {
+      const response = await fetch('/api/hobbies');
+      const hobbies = await response.json();
+
+      hobbies.forEach(hobby => {
+        const option = document.createElement('option');
+        option.value = hobby;
+        option.textContent = hobby;
+        select.appendChild(option);
+      });
+
+      $('#hobbies').selectize({
+        plugins: ['remove_button'],
+        maxItems: null,
+        create: false
+      });
+
+    } catch (error) {
+      console.error('Failed to load hobbies:', error);
+    }
+  });
+</script>
 
 {% endblock %}
